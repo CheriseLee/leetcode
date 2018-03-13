@@ -26,7 +26,9 @@ while num2 <200:
 total3 = []
 num3 = 0
 while num3 <200:
-    str = ''.join(random.shuffle(list(string.ascii_letters))[:7])
+    lst = list(string.ascii_letters)
+    random.shuffle(lst)
+    str = ''.join(lst[:7])
     if(str not in total3):
         total3.append(str)
         num3 = num3 + 1
