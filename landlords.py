@@ -14,7 +14,7 @@ lst1 = [x for x in InUse if((InUse.index(x)+1)%3 ==0)]
 lst2 = [x for x in InUse if((InUse.index(x)+1)%3 ==1)]
 lst3 = [x for x in InUse if((InUse.index(x)+1)%3 ==2)]
 
-print('底牌为：%s'buttom)
+print(buttom)
 print(lst1)
 print(lst2)
 print(lst3)
