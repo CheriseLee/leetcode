@@ -1,9 +1,10 @@
 #生成54张牌
 import random
 color = ['A','B','C','D']#四个花色
+num = [1,2,3,4,5,6,7,8,9,10,'J','Q','K']
 lst = ['King','Queen']
 for x in color:
-    for i in range(13):
+    for i in num:
        lst.append(x+str(i))
 random.shuffle(lst) #洗牌
 
