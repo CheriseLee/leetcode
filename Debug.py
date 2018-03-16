@@ -15,7 +15,6 @@ for p in provinces:
     for c in cities:
         c_code = c.split('|')
         url3 = url % c_code[0]
-        print(url3)
         content3 = urllib.request.urlopen(url3).read().decode('utf8')
         districts = content3.split(',')
         for d in districts:
@@ -23,6 +22,7 @@ for p in provinces:
             d_code = d_pair[0]
             name = d_pair[1]
             url4 = url % d_code
+            print(url4)
             content4 = urllib.request.urlopen(url4).read().decode('utf8')
             code = content4.split('|')[1]
             line = "    '%s': '%s',\n" % (name, code)
