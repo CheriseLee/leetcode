@@ -18,7 +18,7 @@ for x in scores:
     stus_lst.append(stu_lst)
 
 #按照总成绩从大到小排序
-stus_lst.sort(key=lambda x:x[-2], reverse=True)
+stus_lst.sort(key = lambda x:x[-2], reverse = True)
 avg = ['平均']
 
 #计算各科的平均成绩
