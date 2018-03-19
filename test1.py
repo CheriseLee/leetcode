@@ -23,10 +23,10 @@ avg = ['平均']
 
 #计算各科的平均成绩
 for i in range(1, 12):
-    sum = 0
+    each_total = 0
     for x in stus_lst:
-        sum += int(x[i])
-    avg.append(round(sum/len(stus_lst),2))
+        each_total += int(x[i])
+    avg.append(round(each_total/len(stus_lst),2))
 
 #小于60分的替换为不及格
 for x in stus_lst:
@@ -44,10 +44,19 @@ for x in stus_lst:
 title =['名次', '姓名', '语文', '数学', '英语', '物理', '化学', '生物', '政治', '历史', '地理', '总分', '平均分']
 stus_lst.insert(0,title)
 
+
+
 #成绩写入新文件,编码设为GBK,在notepad中打开不会乱码
 g = open('result.txt','w',encoding='GBK')
+
 for x in stus_lst:
-    g.writelines('\n' + ' '.join(map(str,x)))
+    for y in x:
+        if str(y).isdigit:
+            x[x.index(y)] = '%-7s'%str(y)
+        else:
+            x[x.index(y)] = '%-7s' % str(y)
+for x in stus_lst:
+    g.writelines('\n' + ''.join(map(str,x)))
 g.close()
 
 
