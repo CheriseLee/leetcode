@@ -5,5 +5,6 @@ with open('from.txt') as f:
     text = f.readlines()
 m = re.findall('[a-zA-Z]+',str(text[0]))
 n = sorted(m)
-for x in n:
-    print(x)
+with open('to.txt','w') as g:
+    for x in n:
+        g.write(x + '\n')
