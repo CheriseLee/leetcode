@@ -5,6 +5,8 @@ import os
 import urllib.request
 import json
 import chardet
+import time
+import threading
 
 #根据给定的网址来获取网页详细信息，得到的html就是网页的源代码
 def getHtml(url):
@@ -24,10 +26,19 @@ def getImg(html):
     paths = path+'\\'      #保存在test路径下
 
     for imgurl in imglist:
-        urllib.request.urlretrieve("https:" + imgurl,'{}{}.jpeg'.format(paths,x))  #打开imglist中保存的图片网址，并下载图片保存在本地，format格式化字符串
+        t= threading.Thread(target = downloadImg,args = (imgurl, paths,x))
+        t.start()
+        #threading._start_new_thread(downloadImg,(imgurl, paths,x))
         x = x + 1
     return imglist
 
-url = "https://www.qiushibaike.com/imgrank/"
+def downloadImg(imgurl, paths,x):
+    urllib.request.urlretrieve("https:" + imgurl,'{}{}.jpeg'.format(paths,x))  # 打开imglist中保存的图片网址，并下载图片保存在本地，format格式化字符串
+
+pageNum = input("你想下载第几页的图片？")
+url = "https://www.qiushibaike.com/imgrank/page/%s/"%(pageNum)
 html = getHtml(url)
 getImg(html)
+
+while(threading.active_count() > 1 ):
+    time.sleep(1)
